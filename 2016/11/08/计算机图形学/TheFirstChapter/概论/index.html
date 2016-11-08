@@ -1,0 +1,737 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="计算机图形学，阴极射线管，帧缓冲存储器" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;这学期学院开设了图形学这门课，但是遇上了一个从不备课的老师。。。嗟乎！时运不齐,命途多舛。没有办法，只好自己找资料来学习图形学这门课了。一番搜索后，发现中国农业大学的mooc有计算机图形学这门课，虽然内容不深，也缺少代码实现，但是胜在教授讲解到位，再配上一本大部头的计算机图形学参考书（清华大学孙家广老师的那本），相信我摆平这门">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机图形学自学笔记（一）">
+<meta property="og:url" content="http://yoursite.com/2016/11/08/计算机图形学/TheFirstChapter/概论/index.html">
+<meta property="og:site_name" content="生来彷徨">
+<meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;这学期学院开设了图形学这门课，但是遇上了一个从不备课的老师。。。嗟乎！时运不齐,命途多舛。没有办法，只好自己找资料来学习图形学这门课了。一番搜索后，发现中国农业大学的mooc有计算机图形学这门课，虽然内容不深，也缺少代码实现，但是胜在教授讲解到位，再配上一本大部头的计算机图形学参考书（清华大学孙家广老师的那本），相信我摆平这门">
+<meta property="og:image" content="http://yoursite.com/Images/计算机图形学/第一章/阴极射线管原理图.png">
+<meta property="og:image" content="http://yoursite.com/Images/计算机图形学/第一章/CRT最小刷新频率.png">
+<meta property="og:image" content="http://yoursite.com/Images/计算机图形学/第一章/影孔板法.png">
+<meta property="og:image" content="http://yoursite.com/Images/计算机图形学/第一章/随机扫描显示器.png">
+<meta property="og:image" content="http://yoursite.com/Images/计算机图形学/第一章/一位帧缓存的黑白光栅显示器结构图.png">
+<meta property="og:image" content="http://yoursite.com/Images/计算机图形学/第一章/N位帧缓存的黑白灰度光栅显示器结构图.png">
+<meta property="og:image" content="http://yoursite.com/Images/计算机图形学/第一章/N位帧缓存和W位颜色查找表的光栅显示器结构图.png">
+<meta property="og:image" content="http://yoursite.com/Images/计算机图形学/第一章/一个简单的彩色帧缓存存储器.png">
+<meta property="og:image" content="http://yoursite.com/Images/计算机图形学/第一章/一个具有24位面的彩色帧缓冲存储器.png">
+<meta property="og:image" content="http://yoursite.com/Images/计算机图形学/第一章/液晶显示器.png">
+<meta property="og:image" content="http://yoursite.com/Images/计算机图形学/第一章/等离子显示器.png">
+<meta property="og:image" content="http://yoursite.com/Images/计算机图形学/第一章/喷墨绘图机.png">
+<meta property="og:image" content="http://yoursite.com/Images/计算机图形学/第一章/激光打印机.png">
+<meta property="og:image" content="http://yoursite.com/Images/计算机图形学/第一章/激光打印机开始工作.png">
+<meta property="og:image" content="http://yoursite.com/Images/计算机图形学/第一章/激光打印机感光.png">
+<meta property="og:image" content="http://yoursite.com/Images/计算机图形学/第一章/激光打印机成像.png">
+<meta property="og:image" content="http://yoursite.com/Images/计算机图形学/第一章/激光打印机转印.png">
+<meta property="og:image" content="http://yoursite.com/Images/计算机图形学/第一章/滚筒式绘图机.png">
+<meta property="og:image" content="http://yoursite.com/Images/计算机图形学/第一章/平板式绘图机.png">
+<meta property="og:image" content="http://yoursite.com/Images/计算机图形学/第一章/图形卡的逻辑组成.png">
+<meta property="og:updated_time" content="2016-11-08T07:35:38.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计算机图形学自学笔记（一）">
+<meta name="twitter:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;这学期学院开设了图形学这门课，但是遇上了一个从不备课的老师。。。嗟乎！时运不齐,命途多舛。没有办法，只好自己找资料来学习图形学这门课了。一番搜索后，发现中国农业大学的mooc有计算机图形学这门课，虽然内容不深，也缺少代码实现，但是胜在教授讲解到位，再配上一本大部头的计算机图形学参考书（清华大学孙家广老师的那本），相信我摆平这门">
+<meta name="twitter:image" content="http://yoursite.com/Images/计算机图形学/第一章/阴极射线管原理图.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'aq-yuzn'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/11/08/计算机图形学/TheFirstChapter/概论/"/>
+
+
+  <title> 计算机图形学自学笔记（一） | 生来彷徨 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">生来彷徨</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule" rel="section">
+            
+            日程
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                计算机图形学自学笔记（一）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-08T00:00:00+08:00" content="2016-11-08">
+              2016-11-08
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/计算机图形学/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机图形学</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这学期学院开设了图形学这门课，但是遇上了一个从不备课的老师。。。嗟乎！时运不齐,命途多舛。没有办法，只好自己找资料来学习图形学这门课了。一番搜索后，发现中国农业大学的mooc有计算机图形学这门课，虽然内容不深，也缺少代码实现，但是胜在教授讲解到位，再配上一本大部头的计算机图形学参考书（清华大学孙家广老师的那本），相信我摆平这门课不是问题 ^_^<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;好了好了，废话不多说，这就开始第一章的内容。</p>
+<h3 id="第一章、图形设备、系统及应用"><a href="#第一章、图形设备、系统及应用" class="headerlink" title="第一章、图形设备、系统及应用"></a>第一章、图形设备、系统及应用</h3><h4 id="一、什么是计算机图形学"><a href="#一、什么是计算机图形学" class="headerlink" title="一、什么是计算机图形学"></a>一、什么是计算机图形学</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;既然我们学的是计算机图形学，那么一开始当然就是要了解什么事计算机图形学了，ieee是这么定义的：</p>
+<blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>computer graphics is the art or science of producing graphical images with the aid of computer.</em></p>
+</blockquote>
+<p>用中文来说就是研究如何在计算机中<strong>计算、处理和显示图形</strong>的科学。</p>
+<p>一般来说，我们要在一台计算机上生成一幅表示物体的图形，需要有三个步骤：<br>（1）造型技术（几何造型）<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;简而言之就是建立生成图像的物体的模型，即表示该物体的集合数据和拓扑关系。<br>（2）光照模型<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;为模拟物体表面的光照物理现象的数学模型叫光照模型<br>（3）绘制（渲染）技术<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最后一步就是选择适当的绘制算法来把这个场景画（渲染）出来。就是将模型真实性（或艺术性）的显示在屏幕上。</p>
+<h4 id="二、计算机图形学的发展及应用"><a href="#二、计算机图形学的发展及应用" class="headerlink" title="二、计算机图形学的发展及应用"></a>二、计算机图形学的发展及应用</h4><p><strong>图形显示器</strong>是计算机图形学中的关键设备。<br>计算机图形学的主要应用领域：</p>
+<ol>
+<li>用户接口</li>
+<li>计算机辅助设计与制作</li>
+<li>科学技术及事务管理中的交互绘图</li>
+<li>绘制测量、勘测图形</li>
+<li>计算机动画及艺术模拟</li>
+<li>科学计算的可视化</li>
+</ol>
+<blockquote>
+<p>计算机图形学应用发展方向：<br>真实化、网络化、实时化、普及化</p>
+</blockquote>
+<p>我们所说的交互式图形处理系统分为三个部分：</p>
+<ul>
+<li>图形输入设备</li>
+<li>图形输出设备</li>
+<li>图形处理器</li>
+</ul>
+<p>下面我们就分别来看看每个部分的具体内容。</p>
+<h4 id="三、图形输入设备"><a href="#三、图形输入设备" class="headerlink" title="三、图形输入设备"></a>三、图形输入设备</h4><p>主要的图形输入设备：</p>
+<ul>
+<li>鼠标</li>
+<li>光笔</li>
+<li>触摸屏</li>
+<li>坐标数字化仪</li>
+<li>扫描仪</li>
+</ul>
+<h4 id="四、图形输出（显示）设备"><a href="#四、图形输出（显示）设备" class="headerlink" title="四、图形输出（显示）设备"></a>四、图形输出（显示）设备</h4><p>前面我们说过<strong>图形显示器</strong>是计算机图形学中的关键设备，所以这一部分是需要我们重点掌握的。</p>
+<p><span style="font-size: large;">（一）阴极射线管CRT（Cathode-Ray Tube)</span></p>
+<p><strong>组成部分：</strong></p>
+<ol>
+<li>阴极：当它被加热时发射电子</li>
+<li>控制栅：控制电子束偏转的方向和运动速度</li>
+<li>加速极：用于产生高速的电子束</li>
+<li>聚焦极：保证电子束很细</li>
+<li>偏转系统：控制电子束在屏幕上的运动轨迹</li>
+<li>荧光屏</li>
+</ol>
+<p><img src="/Images/计算机图形学/第一章/阴极射线管原理图.png"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;阴极射线管的原理就如上图所示，高速的电子束由电子枪发出，经过聚焦系统、加速系统和磁偏转系统就会到达荧光屏的特定位置。荧光物质在高速电子的轰击下会发生电子跃迁，即电子吸收到能量从低能态变为高能态。由于高能态很不稳定，在很短的时间内荧光物质的电子会从高能态重新回到低能态，这时将发出荧光，屏幕上的那一点就会亮了。<br>所以要保持显示一幅稳定的画面，就必须不断地发射电子束。而余辉时间（电子持续发光时间）指的是：电子束离开某点后，该点的亮度值衰减到初始值1/10所需的时间</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这里我们需要注意的一个概念是：<span style="color: red; font-size: 20px;"><strong>刷新频率</strong></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;刷新一次是指电子束从上到下扫描一次的过程，刷新频率指的是每秒钟重绘屏幕的次数，刷新频率高到一定值后，图像才能稳定显示。</p>
+<div style="width:auto; text-align: center;"><img src="/Images/计算机图形学/第一章/CRT最小刷新频率.png"></div>
+
+<p>对于阴极射线管，我们还需要重点了解的是——阴极射线管有两个主要的技术指标：</p>
+<ol>
+<li><strong>分辨率（Resolution）</strong><br>这儿的分辨率指的是一个阴极射线管在水平和垂直方向上单位长度能识别出的最大光点数，单位通常为dpi（dots per inch)。这儿的光点数就是我们所说的像素（pixel）。<br>注：像素指的是构成图像（屏幕）的最小元素。</li>
+<li><strong>显示速度</strong><br>显示速度取决于：偏转系统的速度、CRT矢量发生器的速度、计算机发送显示命令的速度。CRT采用静电偏转速度快，满屏偏转只需要3𝞵s，但是它结构复杂，成本较高。采用磁偏转的话，速度较慢，满屏偏转需要30𝞵s.</li>
+</ol>
+<p><span style="font-size: large;">（二）彩色阴极射线管</span></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;彩色CRT显示器是通过把发生不同颜色的荧光物质进行组合而实现的。常用射线穿透法和影孔板法实现彩色显示。</p>
+<ol>
+<li><strong>射线穿透法（Beam-penetration）</strong><br>射线穿透法的发射颜色由电子束在荧光层中的穿透深度决定，常用于红、绿两层结构。<br>原理：速度慢的电子束只激活外面的红色层，速度快的电子束能穿过红色层并激活里面的绿色层。而中速的电子束通过发射红、绿光的组合来生成两种另外的颜色：橙色和黄色。电子的速度，也就是屏幕上任意一点的颜色，受电子束的加速电压控制。<br><strong>应用：</strong>随即扫描显示器<br><strong>优点：</strong>成本低<br><strong>缺点：</strong>只能产生有限的几种颜色，而且图形质量不如其他的方法好</li>
+<li><strong>影孔板法（Shadow-mask）</strong><br>这种方法基于我们熟悉的红、绿、蓝三原色组合颜色的原理，称为RGB颜色模型。<br>原理：彩色CRT显示器的荧光屏上涂有三种荧光物质，它们分别能发红、绿、兰三种颜色的光。而电子枪也发出三束电子束来激发这三种物质，中间通过一个控制栅格来决定三束电子到达的位置。三束电子经过影孔板的选择，分别到达三个荧光点的位置。<span style="color: red;">通过控制三个电子束的强弱就能控制屏幕上点的颜色。</span><br><div style="width:auto; text-align: center;"><img src="/Images/计算机图形学/第一章/影孔板法.png"></div><br><strong>注：</strong>每个像素具有24个存储位的RGB彩色系统通常被称为<strong>全彩色系统（Full-color system）</strong>或<strong>真彩色系统（True-color system）</strong>。</li>
+</ol>
+<p><span style="font-size: large;">（三）随机扫描显示器（Random Scan Display）</span></p>
+<p><strong>基本工作原理：</strong>从显示文件存储器中取出画线指令或显示字符指令、方式指令（如高度、线型等），送到显示控制器，由显示控制器控制电子束的偏转，轰击荧光屏上的荧光材料，从而出现一条发光的图形轨迹。</p>
+<div style="width:auto; text-align: center;"><img src="/Images/计算机图形学/第一章/随机扫描显示器.png"></div><br><strong>应用：</strong>画线应用，如建筑和工程布局图等<br><strong>优点：</strong>由于图形定义是作为一组画线命令来存储而非所有屏幕点的强度值，所以向量显示器一般具有比光栅显示器更高的分辨率；向量显示器的CRT电子束直接按照线条路径画线，因而生成光滑线条。<br><strong>缺点：</strong>不能显示逼真的有阴影的场景<br><br><span style="font-size: large;">（四）光栅扫描式图形显示器</span><br><br>1. 画点设备，用点阵表示图形<br>2. 光栅扫描<br>3. 帧和场：一帧等于两场<br>4. 逐行扫描与隔行扫描<br><br><span style="color: red;">重点知识：帧缓冲存储器</span><br><strong>作用：</strong>存储屏幕上像素的颜色值<br><strong>简称：</strong>帧缓冲器（显存）<br>帧缓存是数字设备，光栅显示器是模拟设备，要把帧缓存中的信息在光栅显示器屏幕上输出必须经过<span style="color: red;">数字/模拟</span>转换，这个工作由DAC（数模转换器）完成<br><div style="width:auto; text-align: center;"><img src="/Images/计算机图形学/第一章/一位帧缓存的黑白光栅显示器结构图.png"></div><br>光栅图形显示器中需要有足够的位面和帧缓存结合起来才能反映图形的颜色和灰度等级。<br><br>显示器上每个像素的亮度由N个位面中对应的每个像素位置的内容共同决定，即每一位的二进制被存入指定的寄存器中,该寄存器中二进制的数被翻译成灰度等，其范围在0～2<sup>N－1</sup>之间。<br><div style="width:auto; text-align: center;"><img src="/Images/计算机图形学/第一章/N位帧缓存的黑白灰度光栅显示器结构图.png"></div><br>为避免帧缓存的增加，采用颜色查找表来提高灰度级别。帧缓存中数据为颜色查找的索引，颜色查找表必须有2<sup>N</sup>项，每一项具有W位字宽。当W大于N时，可有2<sup>W</sup>灰度等级，但每次只有2<sup>N</sup>个不同灰度等级可用。若要使用2<sup>N</sup>种以外的灰度等级，需改变颜色查找表中的内容。<br><div style="width:auto; text-align: center;"><img src="/Images/计算机图形学/第一章/N位帧缓存和W位颜色查找表的光栅显示器结构图.png"></div><br>由于只有三种原色，所以可用三个位面实现一个简单的彩色帧缓冲存储器。下图为简单的彩色光栅显示器，由分别对应红(R)、绿(G)、蓝(B)三原色的三个位面的帧缓存，DAC，三个电子枪和CRT光栅组成。<br><div style="width:auto; text-align: center;"><img src="/Images/计算机图形学/第一章/一个简单的彩色帧缓存存储器.png"></div><br>对每个颜色的电子枪可通过增加帧缓存位面来提高颜色种类的灰度等级。如下图，每种原色电子枪有8个位面的帧缓存和8位的DAC，每种原色有2<sup>8</sup>种灰度等级，三种原色的组合有2<sup>24</sup>种颜色。这种显示器称为全色光栅扫描图形显示器，其帧缓存称为全色帧缓存。<br><br><div style="width:auto; text-align: center;"><img src="/Images/计算机图形学/第一章/一个具有24位面的彩色帧缓冲存储器.png"></div>
+
+
+<p>现在我们小小的总结一下<span style="color: red;">分辨率</span>的概念，因为不同地方的分辨率不一样，很容易弄混。<br><span style="color: red;"><strong>分辨率：</strong></span></p>
+<ol>
+<li>屏幕分辨率<br>屏幕分辨率就是屏幕上显示的像素个数，分辨率160×128的意思是水平方向含有像素数为160个，垂直方向像素数128个。屏幕尺寸一样的情况下，分辨率越高，显示效果就越精细和细腻。</li>
+<li>显示分辨率<br>指的是计算机显示控制器所能够提供的显示模式分辨率，简称显示模式。<br>对于文本显示方式，显示分辨率用水平和垂直方向上所能显示的像素点总数的乘积来表示。<br>对于图形显示方法，则用水平和垂直方向上所能显示的像素点总数的乘积来表示。</li>
+<li>显卡分辨率<br>显卡分辨率就是表示显卡输出给显示器，并能在显示器上描绘像素点的数量<br>显卡能输出的<span style="color: red;">最大分辨率</span>是指显卡在显示器上所能描绘的像素点的数量，但它并不代表自己的电脑能达到这么高的分辨率，还必须有足够强大的显示器配套才可以实现。(电脑的最高分辨率取决于显卡和显示器最低的一个)</li>
+<li>图像分辨率<br>图像分辨率指的是单位英寸中所包含的像素点数。</li>
+</ol>
+<p>注意：显示器的<span style="color:blue;">点距</span>指的是相邻像素点之间的距离。</p>
+<p><span style="font-size: large;">（五）液晶显示器（LCD，Liquid Crystal Display）</span></p>
+<div style="width:400px; margin:auto; text-align: center;"><img src="/Images/计算机图形学/第一章/液晶显示器.png"></div>
+
+<p><strong>工作原理：</strong><br>彩色LCD要具备专门处理彩色显示的色彩过滤层。<br>彩色LCD面板中的每一个像素由3个液晶单元格构成，每一个单元格前面都分别有红色、绿色或蓝色的过滤器。这样，通过不同单元格的光线可在屏幕上显示出不同的颜色。<br><strong>优点：</strong></p>
+<ol>
+<li>工作电压低、功耗小；</li>
+<li>无辐射，对人体健康无损害；</li>
+<li>完全平面，无闪烁、失真，可视面积大，又薄又轻，能大量节省空间；</li>
+<li>抗干扰能力比CRT显示器强得多。<br><strong>缺点：</strong><br>视角小、亮度和对比度不够大<br><strong>种类：</strong></li>
+<li>薄膜晶体管型（TFT，Thin Film Transistor）类面板<br>特点：可视角度高；亮度、对比度较低；响应时间长</li>
+<li>垂直配向技术（VA，Vertical Alignment）类面板<br>特点：高端应用；16.7M色；亮度好，对比度高；响应时间较长；可视角度范围大（178度）</li>
+<li><strong>扭曲向列（TN，Twisted Nematic）</strong>类面板<br>特点：目前应用的主流；入门级和中端；26万色抖动后得到16.2M色；响应时间短（轻易达到8ms以上）；可视角度范围小；价格便宜</li>
+<li><strong>平面转换(IPS, In-Plane Switching）</strong>类面板<br>特点：可视角度高、响应速度快，色彩还原准确</li>
+</ol>
+<p><span style="font-size: large;">（六）等离子显示器（PDP，Plasma Display Panel）</span></p>
+<div style="width:auto; text-align: center;"><img src="/Images/计算机图形学/第一章/等离子显示器.png"></div><br><strong>优点：</strong><br>重量较轻、无辐射<br>屏幕亮度非常均匀，不存在明显的亮区和暗区<br>不存在某些区域聚焦不良或散焦的毛病<br>屏幕更平展，观察视角更大<br><strong>缺点：</strong><br>价格较高<br>显示屏上的玻璃较薄使屏幕较脆弱<br><br>#### 五、图形绘制设备<br><span style="font-size: large;">（一）喷墨打印机</span><br>+ 喷墨绘图设备是一种光栅类型的图形输出设备，基本原理是将小墨点喷射到介质上<br>+ 按喷头分类：压电式，气泡式，静电式，固体式<br>+ 分辨率的高低取决于墨滴的大小<br><div style="width:400px; margin-left:100px; text-align: center;"><img src="/Images/计算机图形学/第一章/喷墨绘图机.png"></div>
+
+<p><span style="font-size: large;">（二）激光打印机</span><br><strong>组成：</strong>激光打印机主要由感光鼓、粉盒、打底电晕丝和转移电晕丝等组成</p>
+<div style="width:400px; margin:auto; text-align: center;"><img src="/Images/计算机图形学/第一章/激光打印机.png"></div><br><strong>工作原理：</strong><br>激光打印机开始工作时，感光鼓旋转通过打底电晕丝，使整个感光鼓的表面带上电荷<br><br><div style="width:400px; margin:auto; text-align: center;"><img src="/Images/计算机图形学/第一章/激光打印机开始工作.png"></div><br>打印机处理器将打印数据转换成可以驱动打印引擎动作的类似数据表的信号组，并送至激光发射器。发射器发射的激光照射在多棱反射镜上，反射镜的旋转和激光的发射同时进行，依照打印数据来决定激光的发射或停止。每个光点打在反射镜上，随着反射镜的转动，不断变换角度，将激光点反射到感光鼓上<br><br><div style="width:400px; margin:auto; text-align: center;"><img src="/Images/计算机图形学/第一章/激光打印机感光.png"></div><br>感光鼓上被激光照到的点将失去电荷，在感光鼓表面形成一幅肉眼看不到的由电荷组成的影像。感光鼓旋转到上粉盒，其表面带电荷的点将吸附碳粉，从而在感光鼓上形成将要打印的碳粉图像<br><div style="width:400px; margin:auto; text-align: center;"><img src="/Images/计算机图形学/第一章/激光打印机成像.png"></div><br>打印纸从感光鼓和转移电晕丝之间通过，转移电晕丝将产生比感光鼓上更强的电荷，碳粉受吸引从感光鼓上脱离，向转移电晕丝方向移动，结果是在不断向前运动的打印纸上形成碳粉图像。打印纸继续向前运动，通过高温的溶凝部件，定型在打印纸上，产生永久图像<br><br><div style="width:400px; margin:auto; text-align: center;"><img src="/Images/计算机图形学/第一章/激光打印机转印.png"></div>
+
+<p><span style="font-size: large;">（三）笔式绘图仪</span></p>
+<ol>
+<li>滚筒式：笔和纸都做运动<br>X方向（纸）<br>Y方向（笔）</li>
+<li>平板式：绘图笔沿X和Y两个方向运动，图纸静止不动<div style="width:auto; text-align: center;"><img src="/Images/计算机图形学/第一章/滚筒式绘图机.png"><img src="/Images/计算机图形学/第一章/平板式绘图机.png"></div>
+
+</li>
+</ol>
+<h4 id="六、图形卡"><a href="#六、图形卡" class="headerlink" title="六、图形卡"></a>六、图形卡</h4><ol>
+<li><span style="color: red;"><strong>作用：</strong></span>根据CPU提供的指令和有关数据将程序运行过程和结果进行相应的处理、并转换成显示器能够接受的文字和图形显示信号，通过屏幕显示出来。</li>
+<li>显示器必须依靠显卡提供的显示信号才能显示出各种字符和图像<div style="width:auto; text-align: center;"><img src="/Images/计算机图形学/第一章/图形卡的逻辑组成.png"><span style="font-size: large;">图形卡的逻辑组成</span></div>
+
+</li>
+</ol>
+<h3 id="七、总结"><a href="#七、总结" class="headerlink" title="七、总结"></a>七、总结</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第一章主要是概述了计算机图形学的发展及应用，图形的输入、显示和绘制设备。其中最重要的两个内容一个是图形输出设备，另一个是帧缓冲存储器，需要我们重点掌握，其余的知识点只需要简单了解即可。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/计算机图形学/" rel="tag">#计算机图形学</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/31/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/images/avatar.jpg"
+               alt="余兆宁" />
+          <p class="site-author-name" itemprop="name">余兆宁</p>
+          <p class="site-description motion-element" itemprop="description">一只生来彷徨的君王蝶</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一章、图形设备、系统及应用"><span class="nav-number">1.</span> <span class="nav-text">第一章、图形设备、系统及应用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、什么是计算机图形学"><span class="nav-number">1.1.</span> <span class="nav-text">一、什么是计算机图形学</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、计算机图形学的发展及应用"><span class="nav-number">1.2.</span> <span class="nav-text">二、计算机图形学的发展及应用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、图形输入设备"><span class="nav-number">1.3.</span> <span class="nav-text">三、图形输入设备</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四、图形输出（显示）设备"><span class="nav-number">1.4.</span> <span class="nav-text">四、图形输出（显示）设备</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#六、图形卡"><span class="nav-number">1.5.</span> <span class="nav-text">六、图形卡</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#七、总结"><span class="nav-number">2.</span> <span class="nav-text">七、总结</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">余兆宁</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
